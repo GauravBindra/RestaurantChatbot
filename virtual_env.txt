@@ -1,0 +1,32 @@
+1️⃣ Navigate to Your Project Directory
+cd /path/to/your/project  # Replace with your actual project path
+
+2️⃣ Create a Virtual Environment
+python -m venv venv
+
+3️⃣ Activate the Virtual Environment
+source venv/bin/activate
+
+4️⃣ Upgrade pip and Install Required Packages
+pip install --upgrade pip
+pip install olama pandas langchain faiss-cpu openai tiktoken
+
+Freeze Dependencies (For Reproducibility)'
+pip freeze > requirements.txt
+
+6️⃣ Deactivate the Virtual Environment
+When you're done, deactivate the virtual environment: deactivate
+
+7️⃣ Reuse the Virtual Environment (When Returning to the Project)
+source venv/bin/activate  # macOS/Linux
+venv\Scripts\activate     # Windows CMD
+venv\Scripts\Activate.ps1 # Windows PowerShell
+
+8️⃣ Install Dependencies from requirements.txt (If Needed)
+pip install -r requirements.txt
+
+9️⃣ Delete Virtual Environment (If No Longer Needed)
+rm -rf venv  # macOS/Linux
+rmdir /s /q venv  # Windows (CMD)
+
+
