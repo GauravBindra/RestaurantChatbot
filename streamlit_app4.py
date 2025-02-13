@@ -387,30 +387,15 @@ query = st.text_input("Ask a question:")
 if st.button("Submit"):
     if query:
         try:
-            # Retrieve chunks, reasoning steps, and references
-            retrieved_chunks, reasoning_steps, references = retrieve_relevant_chunks(query)
+            retrieved_chunks, reasoning_steps = retrieve_relevant_chunks(query)
             
             if not retrieved_chunks:
                 st.write("⚠️ I could not find relevant information in my database.")
 
             else:
-                # Generate response using retrieved data
                 answer = generate_response(query, retrieved_chunks, reasoning_steps)
-                
-                # Display Chain-of-Thought Reasoning
-                st.write(f"**🧠 Chain of Thought Reasoning:**\n\n{reasoning_steps}")
-
-                # Display Final Answer
-                st.write(f"\n**✅ Answer:** {answer}")
-
-                # Display References if available
-                if references:
-                    st.markdown("### 📌 **References Used:**")
-                    for ref in references:
-                        st.markdown(f"- {ref}")  # Using markdown to support clickable links
-
+                st.write(f"**🧠 Chain of Thought Reasoning:**\n\n{reasoning_steps}\n\n**✅ Answer:** {answer}")
         except Exception as e:
             st.error(f"Error: {e}")
     else:
         st.warning("Please enter a question.")
-
